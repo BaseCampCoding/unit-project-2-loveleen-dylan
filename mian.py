@@ -28,17 +28,16 @@ print(
     """
 )
 
-print(
-    """
-    We have 5 types of rooms.
-    
-    Studio Suite:
+print("We have 5 types of rooms.")
+print('\n' + '\033[1m' + 'Studio Suite')
+print('\033[0m' + "Featuring a plush bed and living space with extra seating, a sleeper sofa, and a TV that can be seen from every angle of the suite. Each studio suite includes a workstation, a wet bar, a refrigerator, and a microwave.")
 
-    One-Bedroom Suite:
+print('\n\n' + '\033[1m' +'One-Bedroom Suite:')
+print('\033[0m' + 'Including a separate living room with sleeper sofa and a bedroom with a TV in both spaces. Each one-bedroom suite features a workstation, a wet bar, a refrigerator, and a microwave.')
+print('\n\n' + '\033[1m' + 'Two-Bedroom Suite:')
+print('\033[0m' + "Spread out in the separate living room with sleeper sofa and two bedrooms with a TV in all three spaces. Each two-bedroom suite includes a workstation, a wet bar, a refrigerator, and a microwave.")
+print('\n\n' + '\033[1m' + 'Presidential Suite:')
+print('\033[0m' + "Experience even more space and comfort in our Presidential Suite. Some hotels’ Presidential Suites feature an expresso machine, fireplace, a luxury bathroom feature like whirlpool tubs, or a conference table with seating for up to eight.")
+print('\n\n' + '\033[1m' + 'Premium Suite: ')
+print('\033[0m' + "Offering the same experience as our popular one-bedroom suites, Premium Suites include additional upgrades of Premium WiFi, a Keurig coffee brewer, plus snacks and drinks which are replenished daily.")
 
-    Two-Bedroom Suite:
-
-    Presidential Suite:
-    
-    Premium Suite:
-)
