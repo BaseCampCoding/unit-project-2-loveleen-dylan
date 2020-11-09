@@ -1,5 +1,15 @@
 import time
 
+def input_number_check(prompt: str) -> int:
+    while True:
+        response = input(prompt)
+        if response.isdigit():
+            response = int(response)
+            if response >= 0:
+                return response
+        print("Please provide a valid input.")
+
+
 print(
     """              . .                     -:-             .  .  .
             .'.:,'.        .  .  .     ' .           . \ | / .
@@ -70,7 +80,12 @@ rooms = [
     "presidential suite",
     "premium suite",
 ]
+
 input_room_type = input("\n" + "What type of room would you like to reserve today?: ")
+for i in rooms:
+    if input_room_type.lower() not in rooms:
+        print("That room does not exist. Please try again.")
+        input_room_type = input("\n" + "What type of room would you like to reserve today?: ")
 
 import sqlite3
 
@@ -78,11 +93,12 @@ con = sqlite3.connect("RESERVME.db")
 
 cur = con.cursor()
 
-print("Before you can reserve a hotel room we need some information.")
+print("Great. Before you can reserve a hotel room we need some information.")
 full_name = input("What is your name?: ")
-phone_number = input("What is your phone number?: ")
+phone_number = input_number_check("What is your phone number?: ")
+
 address = input("What is your address?: ")
-zip_code = input("What is your zipcode?: ")
+zip_code = input_number_check("What is your zipcode?: ")
 state = input("What state are you from?: ")
 email = input("What is your email address?: ")
 
