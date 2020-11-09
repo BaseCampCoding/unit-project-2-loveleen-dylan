@@ -12,6 +12,11 @@ We came up with this idea from similar apps and programs that exist like `Hotels
 ReserveME will allow you to view which rooms are available at what cost. It will show you all the amenitites and room details when viewing your options. There will be a method of pay system where you will pick how you would like to pay and it will store your bill and payment information. The program will allow you to tell when you would like to check-in at what time and date. There will be mandatory checkout times that will be provided beforehand. 
 
 ### Daily Goals:
+Tuesday - We want to setup the database to retrieve the user information such as (name, address, zipcode, state, phone number,email). We also want to randomly create the hotel rooms and the availability of the rooms.
+
+Wednesday - 
+
+Thursday - 
 
 ### Plan:
 pri
