@@ -73,7 +73,7 @@ print(
 print("$324")
 
 time.sleep(5)
-rooms = [
+ROOMS = [
     "studio suite",
     "one-bedroom suite",
     "two-bedroom suite",
@@ -81,11 +81,16 @@ rooms = [
     "premium suite",
 ]
 
+PRICES = [99, 149, 154, 259, 324]
+
 input_room_type = input("\n" + "What type of room would you like to reserve today?: ")
-for i in rooms:
+for i in ROOMS:
     if input_room_type.lower() not in rooms:
         print("That room does not exist. Please try again.")
         input_room_type = input("\n" + "What type of room would you like to reserve today?: ")
+
+i = ROOMS.index(input_room_type)
+price = PRICES[i]
 
 import sqlite3
 
@@ -95,8 +100,8 @@ cur = con.cursor()
 
 print("Great. Before you can reserve a hotel room we need some information.")
 full_name = input("What is your name?: ")
+number_guests = input_number_check("How many guests will there be in total?: ")
 phone_number = input_number_check("What is your phone number?: ")
-
 address = input("What is your address?: ")
 zip_code = input_number_check("What is your zipcode?: ")
 state = input("What state are you from?: ")
@@ -107,3 +112,8 @@ cur.execute(
     (full_name, address, email, zip_code, state, phone_number),
 )
 cur.execute("SELECT * FROM UserInformation")
+
+cur.execute(
+    "INSERT INTO RoomsAvailability(room_type, price, size, guest) VALUES (?, ?, ?, ?)", (input_room_type, price, number_guests, full_name))
+)
+
