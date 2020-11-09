@@ -1,4 +1,5 @@
 import time
+import sqlite3
 
 def input_number_check(prompt: str) -> int:
     while True:
@@ -83,11 +84,12 @@ ROOMS = [
 
 PRICES = [99, 149, 154, 259, 324]
 
-input_room_type = input("\n" + "What type of room would you like to reserve today?: ")
+room_type = input("\n" + "What type of room would you like to reserve today?: ")
+input_room_type = room_type.lower()
 for i in ROOMS:
-    if input_room_type.lower() not in rooms:
+    if input_room_type not in ROOMS:
         print("That room does not exist. Please try again.")
-        input_room_type = input("\n" + "What type of room would you like to reserve today?: ")
+        room_type = input("\n" + "What type of room would you like to reserve today?: ")
 
 i = ROOMS.index(input_room_type)
 price = PRICES[i]
@@ -114,6 +116,5 @@ cur.execute(
 cur.execute("SELECT * FROM UserInformation")
 
 cur.execute(
-    "INSERT INTO RoomsAvailability(room_type, price, size, guest) VALUES (?, ?, ?, ?)", (input_room_type, price, number_guests, full_name))
+    "INSERT INTO RoomsAvailability(room_type, price, size, guest) VALUES (?, ?, ?, ?)", (input_room_type, price, number_guests, full_name)
 )
-
