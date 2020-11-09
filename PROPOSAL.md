@@ -9,7 +9,11 @@ We came up with this idea from similar apps and programs that exist like `Hotels
 
 
 ### Core User Workflows:
-ReserveME will allow the user to view which rooms are available at what cost. The user can also see the amenitites and room details when viewing options. There will be a method of pay system where the user will pick how they would like to pay. It will store tje user's bill and payment information for the admin to view. The program will allow the user to tell when you would like to check-in at what time and date. There will be mandatory checkout times that will be provided beforehand. 
+- The user to view which rooms are available at what cost
+- The user can also see the amenitites and room details when viewing options.
+- There will be a method of pay system where the user will pick how they would like to pay. 
+- It will store the user's bill and payment information for the admin to view. 
+- The program will allow the user to tell when you would like to check-in at what time and date. There will be mandatory checkout times that will be provided beforehand. 
 
 ### Daily Goals:
 Tuesday - Dylan will setup the database to retrieve the user information such as (name, address, zipcode, state, phone number,email). Loveleen will setup a database for creating the hotel rooms and the availability of the rooms (availability, room_type, price, size, guest name). Loveleen will do the greeting/ walk-through display for the user to be able to reserve a room. Dylan will setup the functioning of showing which rooms are abailable. 
