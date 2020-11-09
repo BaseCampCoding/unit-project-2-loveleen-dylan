@@ -1,5 +1,5 @@
 # PROJECT PROPOSAL
-# 
+# ReserveME
 
 ### Description & Motivation:
 We are building a program that will take care of most of your travel plans. ReserveME will book your hotel reservation to wherever you desire. This program is meant to be beneficial to both customers and businesses to manage reservations on both ends. We thought of building this program to keep hotel reservations on one platform with all its necessary information.
@@ -14,9 +14,9 @@ ReserveME will allow you to view which rooms are available at what cost. It will
 ### Daily Goals:
 Tuesday - We want to setup the database to retrieve the user information such as (name, address, zipcode, state, phone number,email). We also want to randomly create the hotel rooms and the availability of the rooms.
 
-Wednesday - 
+Wednesday - Method of Payment (Show bill), reservation dates, check-in/ check-out times
 
-Thursday - 
+Thursday - Add any extra features, make a greeting/ make it pretty
 
-### Plan:
-pri
+### How Will You Utilize The Content Covered This Unit:
+With this project, we will be covering the content of databases and classes. For our user/ customer information, it will be represented and stored in a database. For our hotel rooms, the availability and rooms itself will be shown through classes of different types of rooms. For our methods of payment, we will be using class for the different methods of payment. All the information in this program will be stored in a database.
