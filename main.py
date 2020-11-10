@@ -1,15 +1,6 @@
 import time
 import sqlite3
 
-def input_number_check(prompt: str) -> int:
-    while True:
-        response = input(prompt)
-        if response.isdigit():
-            response = int(response)
-            if response >= 0:
-                return response
-        print("Please provide a valid input.")
-
 
 print(
     """
@@ -107,22 +98,18 @@ con = sqlite3.connect("RESERVME.db")
 cur = con.cursor()
 
 print("Great. Before you can reserve a hotel room we need some information.")
-full_name = input("What is your name?: ")
-number_guests = input_number_check("How many guests will there be in total?: ")
-phone_number = input_number_check("What is your phone number?: ")
-address = input("What is your address?: ")
-zip_code = input_number_check("What is your zipcode?: ")
-state = input("What state are you from?: ")
-email = input("What is your email address?: ")
+
+
+print(full_name, room_type, price)
 
 cur.execute(
     "INSERT INTO UserInformation(full_name, address, email, zipcode, state, phoneNumber) VALUES(?,?,?,?,?,?)",
     (full_name, address, email, zip_code, state, phone_number),
 )
 cur.execute("SELECT * FROM UserInformation")
-
+con.commit()
+print(cur.fetchall())
 cur.execute(
     "INSERT INTO RoomsAvailability(room_type, price, size, guest) VALUES (?, ?, ?, ?)", (input_room_type, price, number_guests, full_name)
 )
 
-1
