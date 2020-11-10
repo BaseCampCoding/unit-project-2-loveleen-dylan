@@ -124,3 +124,5 @@ cur.execute("SELECT * FROM UserInformation")
 cur.execute(
     "INSERT INTO RoomsAvailability(room_type, price, size, guest) VALUES (?, ?, ?, ?)", (input_room_type, price, number_guests, full_name)
 )
+
+1
