@@ -44,13 +44,13 @@ print(
     "\033[0m"
     + "Featuring a plush bed and living space with extra seating, a sleeper sofa, and a TV that can be seen from every angle of the suite. Each studio suite includes a workstation, a wet bar, a refrigerator, and a microwave."
 )
-print("$99")
+print("$149")
 print("\n\n" + "\033[1m" + "One-Bedroom Suite: ")
 print(
     "\033[0m"
     + "Including a separate living room with sleeper sofa and a bedroom with a TV in both spaces. Each one-bedroom suite features a workstation, a wet bar, a refrigerator, and a microwave."
 )
-print("$149")
+print("$99")
 print("\n\n" + "\033[1m" + "Two-Bedroom Suite: ")
 print(
     "\033[0m"
