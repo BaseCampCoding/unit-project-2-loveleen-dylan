@@ -10,7 +10,7 @@ def input_number_check(prompt: str) -> int:
 class Rooms:
     def __init__(self, type, description, price, inquiries):
     self.type = room_type
-    self.description = description
+    self.description = 
     self.price = price
 
     def inquiries():
@@ -27,5 +27,9 @@ class Rooms:
     zip_code = input_number_check("What is your zipcode?: ")
     state = input("What state are you from?: ")
     email = input("What is your email address?: ")
-
-    
+    descriptions = {
+            "Studio Suite": "Featuring a plush bed and living space with extra seating, a sleeper sofa, and a TV that can be seen from every angle of the suite. Each studio suite includes a workstation, a wet bar, a refrigerator, and a microwave.\n$149",
+            "One-Bedroom Suite": "Including a separate living room with sleeper sofa and a bedroom with a TV in both spaces. Each one-bedroom suite features a workstation, a wet bar, a refrigerator, and a microwave.\n$99",
+            "Two-Bedroom Suite": "Spread out in the separate living room with sleeper sofa and two bedrooms with a TV in all three spaces. Each two-bedroom suite includes a workstation, a wet bar, a refrigerator, and a microwave.\n$154"
+            "Presidential Suite": "Experience even more space and comfort in our Presidential Suite. Some hotels’ Presidential Suites feature an espresso machine, fireplace, a luxury bathroom feature like whirlpool tubs, or a conference table with seating for up to eight.\n$259"
+            "Premium Suite": "Offering the same experience as our popular one-bedroom suites, Premium Suites include additional upgrades of Premium WiFi, a Keurig coffee brewer, plus snacks and drinks which are replenished daily.\n$324"
