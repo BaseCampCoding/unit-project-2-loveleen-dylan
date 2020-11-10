@@ -1,5 +1,7 @@
 import sqlite3
 
+<<<<<<< HEAD
+=======
 con = sqlite3.connect("RESERVME.db")
 
 cur = con.cursor()
@@ -17,6 +19,7 @@ def input_number_check(prompt: str) -> int:
                 return response
         print("Please provide a valid input.")
 
+>>>>>>> 49be050294a7d839bdbe7ef1880ad1f7402f5a71
 
 print(
     """
@@ -59,13 +62,13 @@ print(
     "\033[0m"
     + "Featuring a plush bed and living space with extra seating, a sleeper sofa, and a TV that can be seen from every angle of the suite. Each studio suite includes a workstation, a wet bar, a refrigerator, and a microwave."
 )
-print("$99")
+print("$149")
 print("\n\n" + "\033[1m" + "One-Bedroom Suite: ")
 print(
     "\033[0m"
     + "Including a separate living room with sleeper sofa and a bedroom with a TV in both spaces. Each one-bedroom suite features a workstation, a wet bar, a refrigerator, and a microwave."
 )
-print("$149")
+print("$99")
 print("\n\n" + "\033[1m" + "Two-Bedroom Suite: ")
 print(
     "\033[0m"
@@ -124,7 +127,28 @@ i = ROOMS.index(input_room_type)
 price = PRICES[i]
 
 
+<<<<<<< HEAD
+cur = con.cursor()
+
+print("Great. Before you can reserve a hotel room we need some information.")
+
+
+print(full_name, room_type, price)
+
+cur.execute(
+    "INSERT INTO UserInformation(full_name, address, email, zipcode, state, phoneNumber) VALUES(?,?,?,?,?,?)",
+    (full_name, address, email, zip_code, state, phone_number),
+)
+cur.execute("SELECT * FROM UserInformation")
+con.commit()
+print(cur.fetchall())
+cur.execute(
+    "INSERT INTO RoomsAvailability(room_type, price, size, guest) VALUES (?, ?, ?, ?)", (input_room_type, price, number_guests, full_name)
+)
+
+=======
 cur.execute("SELECT * FROM UserInformation")
 print(cur.fetchall())
 con.commit()
 con.close()
+>>>>>>> 49be050294a7d839bdbe7ef1880ad1f7402f5a71
