@@ -27,3 +27,5 @@ class Rooms:
     zip_code = input_number_check("What is your zipcode?: ")
     state = input("What state are you from?: ")
     email = input("What is your email address?: ")
+
+    

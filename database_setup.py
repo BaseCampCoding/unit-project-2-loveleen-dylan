@@ -6,7 +6,7 @@ cur = con.cursor()
 cur.execute("CREATE TABLE IF NOT EXISTS UserInformation(full_name TEXT, address TEXT, email TEXT, zipcode INT, state TEXT, phoneNumber INT)"
 )
 
-cur.execute("CREATE TABLE IF NOT EXISTS RoomsAvailability(roomID AUTO_INCREMENT, availability TEXT, room_type TEXT, price REAL, size INT, guest TEXT)"
+cur.execute("CREATE TABLE IF NOT EXISTS RoomsAvailability(roomID INTEGER PRIMARY KEY, availability TEXT, room_type TEXT, price REAL, size INT, guest TEXT)"
 )
 
 # cur.execute("""INSERT INTO RoomsAvailability(room_type, price) VALUES
@@ -60,12 +60,12 @@ cur.execute("CREATE TABLE IF NOT EXISTS RoomsAvailability(roomID AUTO_INCREMENT,
 #     ("Premium Suite", 324),
 #     ("Premium Suite", 324),
 #     ("Premium Suite", 324)
-#     """)
+# #     """)
 # con.commit()
 # cur.execute("SELECT * FROM RoomsAvailability")
 # print(cur.fetchall())
 
-cur.execute("CREATE TABLE IF NOT EXISTS Rooms(room_type TEXT, capacity INT, price REAL)")
+# cur.execute("CREATE TABLE IF NOT EXISTS Rooms(room_type TEXT, capacity INT, price REAL)")
 
 # cur.execute("""INSERT INTO Rooms VALUES 
 #     ("Studio Suite", 2, 149),
