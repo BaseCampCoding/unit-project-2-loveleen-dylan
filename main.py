@@ -1,5 +1,5 @@
 import sqlite3
-
+from classes import Rooms
 
 print(
     """
@@ -38,46 +38,29 @@ Let's get started!
 )
 print("We have 5 types of rooms.")
 print("\n" + "\033[1m" + "Studio Suite: ")
-print(
-    "\033[0m"
-    + "Featuring a plush bed and living space with extra seating, a sleeper sofa, and a TV that can be seen from every angle of the suite. Each studio suite includes a workstation, a wet bar, a refrigerator, and a microwave."
-)
-print("$149")
-print("\n\n" + "\033[1m" + "One-Bedroom Suite: ")
-print(
-    "\033[0m"
-    + "Including a separate living room with sleeper sofa and a bedroom with a TV in both spaces. Each one-bedroom suite features a workstation, a wet bar, a refrigerator, and a microwave."
-)
-print("$99")
+
+# "\033[0m"
+print("\033[0m" + str((Rooms("Studio Suite"))))
+
+print("\n" + "\033[1m" + "One-Bedroom Suite: ")
+print("\033[0m" + str((Rooms("One-Bedroom Suite"))))
+
 print("\n\n" + "\033[1m" + "Two-Bedroom Suite: ")
-print(
-    "\033[0m"
-    + "Spread out in the separate living room with sleeper sofa and two bedrooms with a TV in all three spaces. Each two-bedroom suite includes a workstation, a wet bar, a refrigerator, and a microwave."
-)
-print("$154")
+print("\033[0m" + str((Rooms("Two-Bedroom Suite"))))
+
 print("\n\n" + "\033[1m" + "Presidential Suite: ")
-print(
-    "\033[0m"
-    + "Experience even more space and comfort in our Presidential Suite. Some hotels’ Presidential Suites feature an espresso machine, fireplace, a luxury bathroom feature like whirlpool tubs, or a conference table with seating for up to eight."
-)
-print("$259")
+print("\033[0m" + str((Rooms("Presidential Suite"))))
+
 print("\n\n" + "\033[1m" + "Premium Suite: ")
-print(
-    "\033[0m"
-    + "Offering the same experience as our popular one-bedroom suites, Premium Suites include additional upgrades of Premium WiFi, a Keurig coffee brewer, plus snacks and drinks which are replenished daily."
-)
-print("$324")
+print("\033[0m" + str((Rooms("Premium Suite"))))
 
+# input_room_type = room_type.lower()
+# for i in ROOMS:
+#     if input_room_type not in ROOMS:
+#         print("That room does not exist. Please try again.")
+#         room_type = input("\n" + "What type of room would you like to reserve today?: ")
 
+# print("Great. Before you can reserve a hotel room we need some information.")
 
-room_type = input("\n" + "What type of room would you like to reserve today?: ")
-input_room_type = room_type.lower()
-for i in ROOMS:
-    if input_room_type not in ROOMS:
-        print("That room does not exist. Please try again.")
-        room_type = input("\n" + "What type of room would you like to reserve today?: ")
-
-print("Great. Before you can reserve a hotel room we need some information.")
-
-con.commit()
-con.close()
+# con.commit()
+# con.close()
