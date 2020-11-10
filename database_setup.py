@@ -61,7 +61,7 @@ cur.execute("CREATE TABLE IF NOT EXISTS RoomsAvailability(roomID AUTO_INCREMENT,
 #     ("Premium Suite", 324),
 #     ("Premium Suite", 324)
 #     """)
-
+# con.commit()
 # cur.execute("SELECT * FROM RoomsAvailability")
 # print(cur.fetchall())
 
