@@ -1,25 +1,5 @@
 import sqlite3
 
-<<<<<<< HEAD
-=======
-con = sqlite3.connect("RESERVME.db")
-
-cur = con.cursor()
-
-cur.execute("SELECT * FROM UserInformation")
-print(cur.fetchall())
-
-
-def input_number_check(prompt: str) -> int:
-    while True:
-        response = input(prompt)
-        if response.isdigit():
-            response = int(response)
-            if response >= 0:
-                return response
-        print("Please provide a valid input.")
-
->>>>>>> 49be050294a7d839bdbe7ef1880ad1f7402f5a71
 
 print(
     """
@@ -126,8 +106,6 @@ for i in ROOMS:
 i = ROOMS.index(input_room_type)
 price = PRICES[i]
 
-
-<<<<<<< HEAD
 cur = con.cursor()
 
 print("Great. Before you can reserve a hotel room we need some information.")
@@ -146,9 +124,7 @@ cur.execute(
     "INSERT INTO RoomsAvailability(room_type, price, size, guest) VALUES (?, ?, ?, ?)", (input_room_type, price, number_guests, full_name)
 )
 
-=======
 cur.execute("SELECT * FROM UserInformation")
 print(cur.fetchall())
 con.commit()
 con.close()
->>>>>>> 49be050294a7d839bdbe7ef1880ad1f7402f5a71
