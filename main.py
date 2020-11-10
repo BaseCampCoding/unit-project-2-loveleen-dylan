@@ -69,33 +69,7 @@ print(
 print("$324")
 
 
-ROOMS = [
-    "studio suite",
-    "one-bedroom suite",
-    "two-bedroom suite",
-    "presidential suite",
-    "premium suite",
-]
 
-PRICES = [99, 149, 154, 259, 324]
-
-
-def avaliable_rooms_func():
-    avaliable_rooms = input(
-        "Would you like to see the avaliable rooms? [Y/N]: "
-    ).lower()
-    if avaliable_rooms == "y":
-        cur.execute("SELECT * FROM RoomsAvailability")
-        print(cur.fetchall())
-
-    elif avaliable_rooms == "n":
-        pass
-    else:
-        print("Invalid Input")
-        avaliable_rooms_func()
-
-
-avaliable_rooms_func()
 room_type = input("\n" + "What type of room would you like to reserve today?: ")
 input_room_type = room_type.lower()
 for i in ROOMS:
@@ -103,28 +77,7 @@ for i in ROOMS:
         print("That room does not exist. Please try again.")
         room_type = input("\n" + "What type of room would you like to reserve today?: ")
 
-i = ROOMS.index(input_room_type)
-price = PRICES[i]
-
-cur = con.cursor()
-
 print("Great. Before you can reserve a hotel room we need some information.")
 
-
-print(full_name, room_type, price)
-
-cur.execute(
-    "INSERT INTO UserInformation(full_name, address, email, zipcode, state, phoneNumber) VALUES(?,?,?,?,?,?)",
-    (full_name, address, email, zip_code, state, phone_number),
-)
-cur.execute("SELECT * FROM UserInformation")
-con.commit()
-print(cur.fetchall())
-cur.execute(
-    "INSERT INTO RoomsAvailability(room_type, price, size, guest) VALUES (?, ?, ?, ?)", (input_room_type, price, number_guests, full_name)
-)
-
-cur.execute("SELECT * FROM UserInformation")
-print(cur.fetchall())
 con.commit()
 con.close()
