@@ -11,60 +11,60 @@ cur.execute(
     "CREATE TABLE IF NOT EXISTS RoomsAvailability(roomID INTEGER PRIMARY KEY, availability TEXT DEFAULT 'Available', room_type TEXT, price REAL, size INT, guest TEXT)"
 )
 
-cur.execute(
-    """INSERT INTO RoomsAvailability(room_type, price) VALUES
-    ("Studio Suite", 149),
-    ("Studio Suite", 149),
-    ("Studio Suite", 149),
-    ("Studio Suite", 149),
-    ("Studio Suite", 149),
-    ("Studio Suite", 149),
-    ("Studio Suite", 149),
-    ("Studio Suite", 149),
-    ("Studio Suite", 149),
-    ("Studio Suite", 149),
-    ("One-Bedroom Suite", 99),
-    ("One-Bedroom Suite", 99),
-    ("One-Bedroom Suite", 99),
-    ("One-Bedroom Suite", 99),
-    ("One-Bedroom Suite", 99),
-    ("One-Bedroom Suite", 99),
-    ("One-Bedroom Suite", 99),
-    ("One-Bedroom Suite", 99),
-    ("One-Bedroom Suite", 99),
-    ("One-Bedroom Suite", 99),
-    ("Two-Bedroom Suite", 154),
-    ("Two-Bedroom Suite", 154),
-    ("Two-Bedroom Suite", 154),
-    ("Two-Bedroom Suite", 154),
-    ("Two-Bedroom Suite", 154),
-    ("Two-Bedroom Suite", 154),
-    ("Two-Bedroom Suite", 154),
-    ("Two-Bedroom Suite", 154),
-    ("Two-Bedroom Suite", 154),
-    ("Two-Bedroom Suite", 154),
-    ("Presidential Suite", 259),
-    ("Presidential Suite", 259),
-    ("Presidential Suite", 259),
-    ("Presidential Suite", 259),
-    ("Presidential Suite", 259),
-    ("Presidential Suite", 259),
-    ("Presidential Suite", 259),
-    ("Presidential Suite", 259),
-    ("Presidential Suite", 259),
-    ("Presidential Suite", 259),
-    ("Premium Suite", 324),
-    ("Premium Suite", 324),
-    ("Premium Suite", 324),
-    ("Premium Suite", 324),
-    ("Premium Suite", 324),
-    ("Premium Suite", 324),
-    ("Premium Suite", 324),
-    ("Premium Suite", 324),
-    ("Premium Suite", 324),
-    ("Premium Suite", 324)
-    """
-)
+# cur.execute(
+#     """INSERT INTO RoomsAvailability(room_type, price) VALUES
+#     ("Studio Suite", 149),
+#     ("Studio Suite", 149),
+#     ("Studio Suite", 149),
+#     ("Studio Suite", 149),
+#     ("Studio Suite", 149),
+#     ("Studio Suite", 149),
+#     ("Studio Suite", 149),
+#     ("Studio Suite", 149),
+#     ("Studio Suite", 149),
+#     ("Studio Suite", 149),
+#     ("One-Bedroom Suite", 99),
+#     ("One-Bedroom Suite", 99),
+#     ("One-Bedroom Suite", 99),
+#     ("One-Bedroom Suite", 99),
+#     ("One-Bedroom Suite", 99),
+#     ("One-Bedroom Suite", 99),
+#     ("One-Bedroom Suite", 99),
+#     ("One-Bedroom Suite", 99),
+#     ("One-Bedroom Suite", 99),
+#     ("One-Bedroom Suite", 99),
+#     ("Two-Bedroom Suite", 154),
+#     ("Two-Bedroom Suite", 154),
+#     ("Two-Bedroom Suite", 154),
+#     ("Two-Bedroom Suite", 154),
+#     ("Two-Bedroom Suite", 154),
+#     ("Two-Bedroom Suite", 154),
+#     ("Two-Bedroom Suite", 154),
+#     ("Two-Bedroom Suite", 154),
+#     ("Two-Bedroom Suite", 154),
+#     ("Two-Bedroom Suite", 154),
+#     ("Presidential Suite", 259),
+#     ("Presidential Suite", 259),
+#     ("Presidential Suite", 259),
+#     ("Presidential Suite", 259),
+#     ("Presidential Suite", 259),
+#     ("Presidential Suite", 259),
+#     ("Presidential Suite", 259),
+#     ("Presidential Suite", 259),
+#     ("Presidential Suite", 259),
+#     ("Presidential Suite", 259),
+#     ("Premium Suite", 324),
+#     ("Premium Suite", 324),
+#     ("Premium Suite", 324),
+#     ("Premium Suite", 324),
+#     ("Premium Suite", 324),
+#     ("Premium Suite", 324),
+#     ("Premium Suite", 324),
+#     ("Premium Suite", 324),
+#     ("Premium Suite", 324),
+#     ("Premium Suite", 324)
+#     """
+# )
 con.commit()
 
 cur.execute(
@@ -80,3 +80,6 @@ cur.execute(
 #     ("Premium Suite", 7, 324)
 #     """
 # )
+
+cur.execute("SELECT * FROM UserInformation")
+print(cur.fetchall())
