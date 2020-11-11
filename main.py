@@ -11,15 +11,7 @@ c = con.cursor()
 """
 )
 
-print(
-    """
-WELCOME TO ReservME WHERE YOU RESERVE FOR A ME! 
-
-We are delighted to have you here with us today.
-
-Let's get started!
-"""
-)
+print("WELCOME TO ReservME WHERE YOU RESERVE FOR A ME!\n\n\We are delighted to have you here with us today.\n\nLet's get started!")
 print("We have 5 types of rooms.")
 print("\n" + "\033[1m" + "Studio Suite: ")
 
