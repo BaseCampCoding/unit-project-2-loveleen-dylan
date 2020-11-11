@@ -244,7 +244,7 @@ def main_control():
         # creating payment gui
         root = Tk()
         root.title('Payment')
-        root.geometry("350x220")
+        root.geometry("420x220")
         # c.execute(
         #     "SELECT price FROM RoomsAvailability WHERE guest = (?)", (f_name.get(),),
         # )
