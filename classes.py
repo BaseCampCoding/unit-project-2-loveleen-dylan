@@ -40,3 +40,9 @@ class Rooms:
     def __repr__(self):
             return repr(self.description)
 
+
+class PAYMENT:
+    def __init__(self, method, charge):
+        self.method = method
+        self.charge = charge
+        

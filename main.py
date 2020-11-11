@@ -97,6 +97,12 @@ def submit():
     confirm_btn = Button(root, text="Confirm", command=main_control)
     confirm_btn.grid(row=7, column=0, columnspan=1, ipady=5, ipadx=69)
 
+# # creating payment gui
+# root = Tk()
+# btn = Button(root, text= "Make a Payment", fg= 'blue')
+# btn.grid(row=80, column=100)
+# root.title('Payment')
+# root.geometry("300x200+10+10")
 
 # Submit button for the input in the text box
 # The button runs the submit function
