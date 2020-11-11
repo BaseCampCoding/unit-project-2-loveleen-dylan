@@ -1,16 +1,12 @@
 import sqlite3
-<<<<<<< HEAD
 from classes import Rooms
-=======
 from tkinter import *
 from PIL import Image, ImageTk
 
->>>>>>> 2e0ec6c1d8f72724fd1fb98734d847e59800d529
 
 con = sqlite3.connect("RESERVME.db")
 c = con.cursor()
 
-<<<<<<< HEAD
 
 """
 )
@@ -52,7 +48,6 @@ print("\033[0m" + str((Rooms("Premium Suite"))))
 
 # con.commit()
 # con.close()
-=======
 root = Tk()
 root.title(" Rooms")
 root.iconbitmap(
@@ -106,4 +101,3 @@ submit_btn.grid(row=6, column=0, columnspan=1, ipady=5, ipadx=69)
 
 
 root.mainloop()
->>>>>>> 2e0ec6c1d8f72724fd1fb98734d847e59800d529
