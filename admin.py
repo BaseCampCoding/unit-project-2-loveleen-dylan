@@ -173,6 +173,7 @@ def main_control():
         phoneNumber_editor = Entry(editor, width=30)
         phoneNumber_editor.grid(row=6, column=1)
 
+
         # Create Text Box Labels
         room_type_label = Label(editor, text="Room Type")
         room_type_label.grid(row=0, column=0)
@@ -202,6 +203,82 @@ def main_control():
             zipcode_editor.insert(0, record[4])
             state_editor.insert(0, record[5])
             phoneNumber_editor.insert(0, [6])
+    
+    def insertPaymenttoDB():  
+        # Connect to database
+        con = sqlite3.connect("RESERVME.db")
+        # Cursor
+        c = con.cursor()
+
+        # Insert into table
+        c.execute(
+            "INSERT INTO GuestPayment VALUES(:card_carrier, :card_number, :card_csv, :card_expiration, :cardholder)",
+            {
+                "card_carrier": card_carrier.get(),
+                "card_number": card_number.get(),
+                "card_csv": card_csv.get(),
+                "card_expiration": card_expiration.get(),
+                "cardholder": cardholder.get(),
+            },
+        )
+        con.commit()
+        # Commit data
+        con.commit()
+        # Close database
+        con.close()
+        # # Clear Text Boxes
+        # room_type.delete(0, END)
+        # f_name.delete(0, END)
+        # address.delete(0, END)
+        # email.delete(0, END)
+        # zipcode.delete(0, END)
+        # state.delete(0, END)
+        # phoneNumber.delete(0, END)
+
+    def payment():
+        # Connect to database
+        con = sqlite3.connect("RESERVME.db")
+        # Cursor
+        c = con.cursor()
+
+        # creating payment gui
+        root = Tk()
+        root.title('Payment')
+        root.geometry("350x220")
+        # c.execute(
+        #     "SELECT price FROM RoomsAvailability WHERE guest = (?)", (f_name.get(),),
+        # )
+        # total = c.fetchall()
+        # columns = ("Price")
+        # tree = ttk.Treeview(root, height=20, columns=columns, show="headings")
+        # tree.grid(row=0, column=0, sticky="news")
+        # for data in total:
+        #     tree.insert("", "end", value=info)
+        card_carrier = Entry(root, width=30)
+        card_carrier.grid(row=0, column=1)
+        card_number = Entry(root, width=30)
+        card_number.grid(row=1, column=1)
+        card_csv = Entry(root, width=30)
+        card_csv.grid(row=2, column=1)
+        card_expiration = Entry(root, width=30)
+        card_expiration.grid(row=3, column=1)
+        cardholder = Entry(root, width=30)
+        cardholder.grid(row=4, column=1)
+        card_carrier_label = Label(root, text="Card Company")
+        card_carrier_label.grid(row=0, column=0)
+        card_number_label = Label(root, text="Card Number")
+        card_number_label.grid(row=1, column=0)
+        card_csv_label = Label(root, text="CSV #") 
+        card_csv_label.grid(row=2, column=0)
+        card_expiration_label = Label(root, text="Expiration Date (MM/YY)")
+        card_expiration_label.grid(row=3, column=0)
+        cardholder_label = Label(root, text="Cardholder Name")
+        cardholder_label.grid(row=4, column=0)
+        # make payment button
+        make_payment_btn = Button(root, text="Make Payment", command=insertPaymenttoDB)
+        make_payment_btn.grid(row=5, column=1, columnspan=1, ipady=5, ipadx=77)
+
+
 
     # Create Text Boxes
     room_type = Entry(root, width=30)
@@ -221,6 +298,10 @@ def main_control():
     delete_box = Entry(root, width=30)
     delete_box.grid(row=9, column=1)
 
+    
+
+
+
     # Create Text Box Labels
     room_type_label = Label(root, text="Room Type")
     room_type_label.grid(row=0, column=0)
@@ -238,6 +319,7 @@ def main_control():
     phoneNumber_label.grid(row=6, column=0)
     delete_box_label = Label(root, text="Select ID Number")
     delete_box_label.grid(row=9, column=0)
+  
 
     # Submit Button
     submit_btn = Button(root, text="Add to Database", command=query)
@@ -252,3 +334,7 @@ def main_control():
     # Edit Record Button
     edit_record = Button(root, text="Edit Record", command=update)
     edit_record.grid(row=11, column=1, columnspan=1, ipady=5, ipadx=84)
+
+    # make payment button
+    payment_btn = Button(root, text="Add a Payment", command=payment)
+    payment_btn.grid(row=12, column=1, columnspan=1, ipady=5, ipadx=77)

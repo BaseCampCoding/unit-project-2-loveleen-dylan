@@ -84,4 +84,4 @@ cur.execute(
 cur.execute("SELECT * FROM UserInformation")
 print(cur.fetchall())
 
-cur.execute("CREATE TABLE IF NOT EXISTS GuestPayment(guest_name, charge, method_of_payment)")
+cur.execute("CREATE TABLE IF NOT EXISTS GuestPayment(card_carrier TEXT, card_number INT, card_csv INT, card_expiration TEXT, cardholder TEXT)")
