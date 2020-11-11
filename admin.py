@@ -245,7 +245,11 @@ def main_control():
 
         # creating payment gui
         root = Tk()
+<<<<<<< HEAD
         root.title("Payment")
+=======
+        root.title('Payment')
+>>>>>>> 4dc2c0bc840c0d27ca6dcce6a0aef368c26baaa9
         root.geometry("420x220")
         # c.execute(
         #     "SELECT price FROM RoomsAvailability WHERE guest = (?)", (f_name.get(),),
