@@ -1,15 +1,12 @@
 import sqlite3
 from classes import Rooms
 from tkinter import *
-from PIL import Image, ImageTk
+# from PIL import Image, ImageTk
 
 
 con = sqlite3.connect("RESERVME.db")
 c = con.cursor()
 
-
-"""
-)
 
 print("WELCOME TO ReservME WHERE YOU RESERVE FOR A ME!\n\n\We are delighted to have you here with us today.\n\nLet's get started!")
 print("We have 5 types of rooms.")
