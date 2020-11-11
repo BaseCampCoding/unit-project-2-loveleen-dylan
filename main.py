@@ -3,6 +3,7 @@ from classes import Rooms
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
+from admin import main_control
 
 # from PIL import Image, ImageTk
 
@@ -38,7 +39,7 @@ root.title(" Rooms")
 root.iconbitmap(
     "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-bkeqe&psig=AOvVaw2oBqXabpCHoyEx9EyMKvdl&ust=1605115375818000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDPvfG--OwCFQAAAAAdAAAAABAh"
 )
-root.geometry("193x95")
+root.geometry("193x87")
 # Creating the textbox and the label on the GUI
 room_label_entry = Entry(root, width=30)
 room_label_entry.grid(row=2, column=0)
@@ -47,6 +48,7 @@ room_label.grid(row=1, column=0)
 
 
 def submit():
+
     # Creating another window after submitting
     root = Tk()
     room_label_get = room_label_entry.get()
@@ -54,7 +56,7 @@ def submit():
     root.iconbitmap(
         "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-bkeqe&psig=AOvVaw2oBqXabpCHoyEx9EyMKvdl&ust=1605115375818000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDPvfG--OwCFQAAAAAdAAAAABAh"
     )
-    root.geometry("400x420")
+    root.geometry("400x467")
     # Checking for the input from the textbox
     c.execute(
         "SELECT roomID,availability,room_type,price FROM RoomsAvailability WHERE room_type =(?) AND  availability = 'Available'",
@@ -65,6 +67,7 @@ def submit():
     columns = ("RoomID", "Availability", "Room Type", "Price")
     tree = ttk.Treeview(root, height=20, columns=columns, show="headings")
     tree.grid(row=0, column=0, sticky="news")
+
     # Centering the columns
     for col in columns:
         tree.heading(col, text=col)
@@ -72,9 +75,9 @@ def submit():
     # Inserting the data into the columns
     for info in rooms:
         tree.insert("", "end", value=info)
-    confirm_btn = Button(root, text="Confirm", command=entry).grid(
-        row=7, column=0, columnspan=1, ipady=5, ipadx=69
-    )
+
+    confirm_btn = Button(root, text="Confirm", command=main_control)
+    confirm_btn.grid(row=7, column=0, columnspan=1, ipady=5, ipadx=69)
 
 
 # Submit button for the input in the text box
