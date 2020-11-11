@@ -85,6 +85,7 @@ def main_control():
         # Close Connection
         con.close()
 
+    # Function to delete data
     def delete():
         # Connect to database
         con = sqlite3.connect("RESERVME.db")
@@ -99,6 +100,7 @@ def main_control():
         # Close Connection
         con.close()
 
+    # Function to save the updated data
     def save():
         # Connect to database
         editor = Tk()
@@ -133,6 +135,7 @@ def main_control():
         con.close()
         editor.destroy()
 
+    # Function to update the data
     def update():
         editor = Tk()
         editor.title("Update A Record")
