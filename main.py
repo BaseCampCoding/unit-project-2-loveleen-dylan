@@ -62,19 +62,14 @@ def submit():
         messagebox.showerror("Error", "The room you are looking for is not available. Please try again.")
     if input_room_type == "studio suite":
         room = "Studio Suite"
-        return room
     elif input_room_type == "one-bedroom suite":
         room = "One-Bedroom Suite"
-        return room
     elif input_room_type == "two-bedroom suite":
-        room_type = "Two-Bedroom Suite"
-        return room
+        room = "Two-Bedroom Suite"
     elif input_room_type == "presidential suite":
-        room_type = "Presidential Suite"
-        return room
+        room = "Presidential Suite"
     elif input_room_type == "premium suite":
-        room_type = "Premium Suite"
-        return room
+        room = "Premium Suite"
     root.title(" Available Rooms")
     root.iconbitmap(
         "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-bkeqe&psig=AOvVaw2oBqXabpCHoyEx9EyMKvdl&ust=1605115375818000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDPvfG--OwCFQAAAAAdAAAAABAh"
