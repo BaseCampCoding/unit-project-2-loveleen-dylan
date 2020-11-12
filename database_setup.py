@@ -4,7 +4,7 @@ con = sqlite3.connect("RESERVME.db")
 cur = con.cursor()
 
 cur.execute(
-    "CREATE TABLE IF NOT EXISTS UserInformation(room_type TEXT, full_name TEXT, address TEXT, email TEXT, zipcode INT, state TEXT, phoneNumber INT)"
+    "CREATE TABLE IF NOT EXISTS UserInformation(userID INTEGER PRIMARY KEY, room_type TEXT, full_name TEXT, address TEXT, email TEXT, zipcode INT, state TEXT, phoneNumber INT)"
 )
 
 cur.execute(
