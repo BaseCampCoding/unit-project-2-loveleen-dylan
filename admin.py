@@ -43,7 +43,6 @@ def main_control():
         state.delete(0, END)
         phoneNumber.delete(0, END)
 
-
     # Function to show userinfo data
     def records():
         root = Tk()
@@ -210,13 +209,11 @@ def main_control():
             state_editor.insert(0, record[6])
             phoneNumber_editor.insert(0, [7])
 
-
-
- # Function to show paymentinfo data
-    def paymentRecords(): 
+    # Function to show paymentinfo data
+    def paymentRecords():
         root = Tk()
         root.title("PaymentDataBase")
-        root.geometry("702x400")
+        root.geometry("500x400")
         # Connect to database
         con = sqlite3.connect("RESERVME.db")
         # Cursor
@@ -252,7 +249,7 @@ def main_control():
         # Close Connection
         con.close()
 
-# Function to delete paymentinfo data
+    # Function to delete paymentinfo data
     def deletePayment():
         # Connect to database
         con = sqlite3.connect("RESERVME.db")
@@ -267,7 +264,7 @@ def main_control():
         # Close Connection
         con.close()
 
-# Function to save the userinfo updated data
+    # Function to save the userinfo updated data
     def savePayment():
         # Connect to database
         editor = Tk()
@@ -424,28 +421,26 @@ def main_control():
     submit_btn = Button(root, text="Add to Database", command=query)
     submit_btn.grid(row=7, column=1, columnspan=1, ipady=5, ipadx=72.4)
 
+    # Make Payment button
+    payment_btn = Button(root, text="Add a Payment", command=payment)
+    payment_btn.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=73.6)
+
+
+
     # Show Records Button
     show_records = Button(root, text="Show Records", command=records)
-    show_records.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=79)
+    show_records.grid(row=10, column=1, columnspan=1, ipady=5, ipadx=79)
 
-    # Delete Records Button
-    delete_records = Button(root, text="Delete Record", command=delete)
-    delete_records.grid(row=10, column=1, columnspan=1, ipady=5, ipadx=77.3)
     # Edit Record Button
     edit_record = Button(root, text="Edit Record", command=update)
     edit_record.grid(row=11, column=1, columnspan=1, ipady=5, ipadx=84)
 
+    # Show Records Button
+    show_records = Button(root, text="Show Records", command=records)
+    show_records.grid(row=10, column=1, columnspan=1, ipady=5, ipadx=79)
 
+    # Delete Records Button
+    delete_records = Button(root, text="Delete Record", command=delete)
+    delete_records.grid(row=13, column=1, columnspan=1, ipady=5, ipadx=77.3)
 
-    # make payment button
-    payment_btn = Button(root, text="Add a Payment", command=payment)
-    payment_btn.grid(row=13, column=1, columnspan=1, ipady=5, ipadx=77)
-
- 
-
-
-    
-
-
-    payment_btn.grid(row=12, column=1, columnspan=1, ipady=5, ipadx=73.6)
 
