@@ -43,7 +43,8 @@ def main_control():
         state.delete(0, END)
         phoneNumber.delete(0, END)
 
-    # Function to show user information data
+
+    # Function to show userinfo data
     def records():
         root = Tk()
         root.title("DataBase")
@@ -86,7 +87,7 @@ def main_control():
         # Close Connection
         con.close()
 
-    # Function to delete the selected user information data
+    # Function to delete userinfo data
     def delete():
         # Connect to database
         con = sqlite3.connect("RESERVME.db")
@@ -101,7 +102,7 @@ def main_control():
         # Close Connection
         con.close()
 
-    # Function to save the updated data
+    # Function to save the userinfo updated data
     def save():
         # Connect to database
         editor = Tk()
@@ -209,6 +210,93 @@ def main_control():
             state_editor.insert(0, record[6])
             phoneNumber_editor.insert(0, [7])
 
+
+
+ # Function to show paymentinfo data
+    def paymentRecords(): 
+        root = Tk()
+        root.title("PaymentDataBase")
+        root.geometry("702x400")
+        # Connect to database
+        con = sqlite3.connect("RESERVME.db")
+        # Cursor
+        c = con.cursor()
+
+        # Select data
+        c.execute("SELECT * FROM GuestPayment")
+        paymentRecords = c.fetchall()
+        columns = (
+            "Card Company",
+            "Card Number",
+            "CSV",
+            "Expiration Date",
+            "Cardholder",
+        )
+        tree = ttk.Treeview(root, height=20, columns=columns, show="headings")
+        tree.grid(row=0, column=0, sticky="news")
+
+        # Centering the columns
+        for col in columns:
+            tree.heading(col, text=col)
+            tree.column(col, width=100, anchor=tk.CENTER)
+        # Inserting the data into the columns
+        for info in paymentRecords:
+            tree.insert("", "end", value=info)
+
+        query_label = Label(root, text=print_records)
+        query_label.grid(row=9, column=0, columnspan=2)
+
+        # Commit changes
+        con.commit()
+
+        # Close Connection
+        con.close()
+
+# Function to delete paymentinfo data
+    def deletePayment():
+        # Connect to database
+        con = sqlite3.connect("RESERVME.db")
+        # Cursor
+        c = con.cursor()
+
+        c.execute("DELETE from Guest WHERE oid= " + delete_box.get())
+
+        # Commit changes
+        con.commit()
+
+        # Close Connection
+        con.close()
+
+# Function to save the userinfo updated data
+    def savePayment():
+        # Connect to database
+        editor = Tk()
+        record_id = delete_box.get()
+        con = sqlite3.connect("RESERVME.db")
+        # Cursor
+        c = con.cursor()
+        c.execute(
+            """ UPDATE GuestPayment SET
+        card_carrier = :carrier,
+        card_number = :number,
+        card_csv = :csv,
+        card_expiration = :expiration,
+        cardholder =:cardholder,
+
+        WHERE oid = :oid""",
+            {
+                "carrier": card_carrier_editor.get(),
+                "number": card_number_editor.get(),
+                "csv": card_csv_editor.get(),
+                "expiration": card_expiration_editor.get(),
+                "cardholder": cardholder_editor.get(),
+            },
+        )
+        # Close database
+        con.commit()
+        con.close()
+        editor.destroy()
+
     def insertPaymenttoDB():
         # Connect to database
         con = sqlite3.connect("RESERVME.db")
@@ -286,6 +374,15 @@ def main_control():
         # Payment button
         make_payment_btn = Button(root, text="Make Payment", command=insertPaymenttoDB)
         make_payment_btn.grid(row=5, column=1, columnspan=1, ipady=5, ipadx=77)
+        # Show Payment Records Button
+        show_payments = Button(root, text="Show Payments", command=paymentRecords)
+        show_payments.grid(row=6, column=1, columnspan=1, ipady=5, ipadx=79)
+        # Delete Records Button
+        delete_payment = Button(root, text="Delete Payment", command=deletePayment)
+        delete_payment.grid(row=7, column=1, columnspan=1, ipady=5, ipadx=77)
+        # Edit Record Button
+        # edit_payments = Button(root, text="Edit Record", command=update)
+        # edit_payments.grid(row=9, column=1, columnspan=1, ipady=5, ipadx=84)
 
     # Create Text Boxes
     room_type = Entry(root, width=30)
@@ -325,7 +422,8 @@ def main_control():
 
     # Submit Button
     submit_btn = Button(root, text="Add to Database", command=query)
-    submit_btn.grid(row=7, column=1, columnspan=1, ipady=5, ipadx=72.46)
+    submit_btn.grid(row=7, column=1, columnspan=1, ipady=5, ipadx=72.4)
+
     # Show Records Button
     show_records = Button(root, text="Show Records", command=records)
     show_records.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=79)
@@ -337,6 +435,17 @@ def main_control():
     edit_record = Button(root, text="Edit Record", command=update)
     edit_record.grid(row=11, column=1, columnspan=1, ipady=5, ipadx=84)
 
+
+
     # make payment button
     payment_btn = Button(root, text="Add a Payment", command=payment)
+    payment_btn.grid(row=13, column=1, columnspan=1, ipady=5, ipadx=77)
+
+ 
+
+
+    
+
+
     payment_btn.grid(row=12, column=1, columnspan=1, ipady=5, ipadx=73.6)
+
