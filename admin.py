@@ -77,8 +77,6 @@ def main_control():
         for info in records:
             tree.insert("", "end", value=info)
 
-        query_label = Label(root, text=print_records)
-        query_label.grid(row=9, column=0, columnspan=2)
 
         # Commit changes
         con.commit()
@@ -293,6 +291,7 @@ def main_control():
         con.commit()
         con.close()
         editor.destroy()
+
     def editPayment():
         editor = Tk()
         editor.title("Edit a Payment")
@@ -302,7 +301,7 @@ def main_control():
         con = sqlite3.connect("RESERVME.db")
         # Cursor
         c = con.cursor()
-        # paymentRecord_id = 
+        # paymentRecord_id =
 
     def insertPaymenttoDB():
         # Connect to database
@@ -347,7 +346,7 @@ def main_control():
         # creating payment gui
         root = Tk()
         root.title("Payment")
-        root.geometry("420x220")
+        root.geometry("400x400")
         # c.execute(
         #     "SELECT price FROM RoomsAvailability WHERE guest = (?)", (f_name.get(),),
         # )
@@ -390,14 +389,13 @@ def main_control():
         make_payment_btn.grid(row=5, column=1, columnspan=1, ipady=5, ipadx=77)
         # Show Payment Records Button
         show_payments = Button(root, text="Show Payments", command=paymentRecords)
-        show_payments.grid(row=7, column=1, columnspan=1, ipady=5, ipadx=79)
+        show_payments.grid(row=7, column=1, columnspan=1, ipady=5, ipadx=76)
         # Delete Records Button
         delete_payment = Button(root, text="Delete Payment", command=deletePayment)
-        delete_payment.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=77)
+        delete_payment.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=76)
         # Edit Record Button
         edit_payments = Button(root, text="Edit Record", command=update)
-        edit_payments.grid(row=9, column=1, columnspan=1, ipady=5, ipadx=84)
-
+        edit_payments.grid(row=9, column=1, columnspan=1, ipady=5, ipadx=87)
 
     # Create Text Boxes
     room_type = Entry(root, width=30)
@@ -443,11 +441,9 @@ def main_control():
     payment_btn = Button(root, text="Add a Payment", command=payment)
     payment_btn.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=73.6)
 
-
-
     # Show Records Button
     show_records = Button(root, text="Show Records", command=records)
-    show_records.grid(row=10, column=1, columnspan=1, ipady=5, ipadx=79)
+    show_records.grid(row=10, column=1, columnspan=1, ipady=5, ipadx=77.7)
 
     # Edit Record Button
     edit_record = Button(root, text="Edit Record", command=update)
@@ -460,5 +456,3 @@ def main_control():
     # Delete Records Button
     delete_records = Button(root, text="Delete Record", command=delete)
     delete_records.grid(row=13, column=1, columnspan=1, ipady=5, ipadx=77.3)
-
-
