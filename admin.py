@@ -77,7 +77,6 @@ def main_control():
         for info in records:
             tree.insert("", "end", value=info)
 
-
         # Commit changes
         con.commit()
 
@@ -153,7 +152,7 @@ def main_control():
         con = sqlite3.connect("RESERVME.db")
         # Cursor
         c = con.cursor()
-        record_id = card_id.get()
+        record_id = delete_box.get()
         # Select data
 
         # Create Text Boxes
@@ -195,7 +194,7 @@ def main_control():
         edit_record = Button(editor, text="Save Record", command=save)
         edit_record.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=84)
 
-        c.execute("SELECT * FROM GuestPayment WHERE oid=" + record_id)
+        c.execute("SELECT * FROM UserInformation WHERE oid=" + record_id)
         records = c.fetchall()
         for record in records:
             userID_editor.insert(0, record[0])
@@ -288,7 +287,7 @@ def main_control():
         )
         # Close database
         con.commit()
-        con.close()        
+        con.close()
         editor.destroy()
 
     def editPayment():
@@ -307,7 +306,6 @@ def main_control():
         c = con.cursor()
         global paymentRecord_id
         paymentRecord_id = card_id.get()
-        
 
         # Create Text Boxes
         card_id_editor = Entry(editor, width=30)
@@ -328,7 +326,7 @@ def main_control():
         card_id_label.grid(row=0, column=0)
         card_carrier_label = Label(editor, text="Card Carrier")
         card_carrier_label.grid(row=1, column=0)
-        card_number_label = Label(editor, text="Card Number")     
+        card_number_label = Label(editor, text="Card Number")
         card_number_label.grid(row=2, column=0)
         card_csv_label = Label(editor, text="CSV")
         card_csv_label.grid(row=3, column=0)
@@ -349,7 +347,6 @@ def main_control():
             card_csv_editor.insert(0, record[3])
             card_expiration_editor.insert(0, record[4])
             cardholder_editor.insert(0, record[5])
-
 
     def insertPaymenttoDB():
         # Connect to database
@@ -380,8 +377,6 @@ def main_control():
         card_expiration.delete(0, END)
         cardholder.delete(0, END)
 
-
-
     def updatePayment():
         global card_carrier
         global card_number
@@ -410,7 +405,7 @@ def main_control():
                 "card_expiration": card_expiration.get(),
                 "cardholder": cardholder.get(),
             },
-        )        # Commit data
+        )  # Commit data
         con.commit()
         # Close database
         con.close()
@@ -420,6 +415,7 @@ def main_control():
         card_csv.delete(0, END)
         card_expiration.delete(0, END)
         cardholder.delete(0, END)
+
     def payment():
         global card_carrier
         global card_number
@@ -459,7 +455,7 @@ def main_control():
         cardholder.grid(row=4, column=1)
         card_id = Entry(root, width=30)
         card_id.grid(row=6, column=1)
-        
+
         # Labels for Payment textboxes
         card_carrier_label = Label(root, text="Card Company")
         card_carrier_label.grid(row=0, column=0)
@@ -486,8 +482,6 @@ def main_control():
         # Edit Record Button
         edit_payments = Button(root, text="Edit Payment", command=editPayment)
         edit_payments.grid(row=9, column=1, columnspan=1, ipady=5, ipadx=84)
-
-
 
     # Create Text Boxes
     room_type = Entry(root, width=30)
@@ -532,8 +526,6 @@ def main_control():
     # Make Payment button
     payment_btn = Button(root, text="Add a Payment", command=payment)
     payment_btn.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=73.6)
-
-
 
     # Show Records Button
     show_records = Button(root, text="Show Records", command=records)
