@@ -59,6 +59,7 @@ def submit():
     room_label_get = room_label_entry.get()
     input_room_type = room_label_get.lower()
     if input_room_type not in ROOMS:
+        Tk().withdraw()
         messagebox.showerror("Error", "The room you are looking for is not available. Please try again.")
     if input_room_type == "studio suite":
         room = "Studio Suite"
