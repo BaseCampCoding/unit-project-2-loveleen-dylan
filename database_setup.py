@@ -65,28 +65,28 @@ cur.execute(
 #     ("Premium Suite", 324)
 #     """
 # )
-con.commit()
+# con.commit()
 
-cur.execute(
-    "CREATE TABLE IF NOT EXISTS Rooms(room_type TEXT, capacity INT, price REAL)"
-)
+# cur.execute(
+#     "CREATE TABLE IF NOT EXISTS Rooms(room_type TEXT, capacity INT, price REAL)"
+# )
 
-cur.execute(
-    """INSERT INTO Rooms VALUES
-    ("Studio Suite", 2, 149),
-    ("One-Bedroom Suite", 2, 99),
-    ("Two-Bedroom Suite", 4, 154),
-    ("Presidential Suite", 5, 259),
-    ("Premium Suite", 7, 324)
-    """
-)
+# cur.execute(
+#     """INSERT INTO Rooms VALUES
+#     ("Studio Suite", 2, 149),
+#     ("One-Bedroom Suite", 2, 99),
+#     ("Two-Bedroom Suite", 4, 154),
+#     ("Presidential Suite", 5, 259),
+#     ("Premium Suite", 7, 324)
+#     """
+# )
 
-cur.execute("SELECT * FROM UserInformation")
-print(cur.fetchall())
+# cur.execute("SELECT * FROM UserInformation")
+# print(cur.fetchall())
 
-cur.execute(
-    "CREATE TABLE IF NOT EXISTS GuestPayment(card_carrier TEXT, card_number INT, card_csv INT, card_expiration TEXT, cardholder TEXT)"
-)
+# cur.execute(
+#     "CREATE TABLE IF NOT EXISTS GuestPayment(card_carrier TEXT, card_number INT, card_csv INT, card_expiration TEXT, cardholder TEXT)"
+# )
 
-cur.execute("SELECT * FROM GuestPayment")
-print(cur.fetchall())
+# cur.execute("SELECT * FROM GuestPayment")
+# print(cur.fetchall())
