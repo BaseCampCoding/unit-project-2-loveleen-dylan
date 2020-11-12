@@ -211,7 +211,7 @@ def main_control():
     def paymentRecords():
         root = Tk()
         root.title("PaymentDataBase")
-        root.geometry("500x400")
+        root.geometry("600x400")
         # Connect to database
         con = sqlite3.connect("RESERVME.db")
         # Cursor
@@ -221,7 +221,7 @@ def main_control():
         c.execute("SELECT * FROM GuestPayment")
         paymentRecords = c.fetchall()
         columns = (
-            "Card ID",
+            "Payment ID",
             "Card Company",
             "Card Number",
             "CSV",
@@ -264,7 +264,7 @@ def main_control():
     def savePayment():
         # Connect to database
         editor = Tk()
-        record_id = delete_box.get()
+        record_id = card_id.get()
         con = sqlite3.connect("RESERVME.db")
         # Cursor
         c = con.cursor()
@@ -274,7 +274,7 @@ def main_control():
         card_number = :number,
         card_csv = :csv,
         card_expiration = :expiration,
-        cardholder =:cardholder,
+        cardholder =:cardholder
 
         WHERE oid = :oid""",
             {
@@ -283,19 +283,24 @@ def main_control():
                 "csv": card_csv_editor.get(),
                 "expiration": card_expiration_editor.get(),
                 "cardholder": cardholder_editor.get(),
+                "oid": record_id,
             },
         )
         # Close database
         con.commit()
-        con.close()
+        con.close()        
         editor.destroy()
-        
 
     def editPayment():
         editor = Tk()
         editor.title("Edit a Payment")
-        editor.geometry("400x600")
 
+        editor.geometry("400x600")
+        global card_carrier_editor
+        global card_number_editor
+        global card_csv_editor
+        global card_expiration_editor
+        global cardholder_editor
         # Connect to database
         con = sqlite3.connect("RESERVME.db")
         # Cursor
@@ -305,40 +310,45 @@ def main_control():
         
 
         # Create Text Boxes
-        card_carrier_editor = Entry(root, width=30)
-        card_carrier_editor.grid(row=0, column=1)
-        card_number_editor = Entry(root, width=30)
-        card_number_editor.grid(row=1, column=1)
-        card_csv_editor = Entry(root, width=30)
-        card_csv_editor.grid(row=2, column=1)
-        card_expiration_editor = Entry(root, width=30)
-        card_expiration_editor.grid(row=3, column=1)
-        cardholder_editor = Entry(root, width=30)
-        cardholder_editor.grid(row=4, column=1)
+        card_id_editor = Entry(editor, width=30)
+        card_id_editor.grid(row=0, column=1)
+        card_carrier_editor = Entry(editor, width=30)
+        card_carrier_editor.grid(row=1, column=1)
+        card_number_editor = Entry(editor, width=30)
+        card_number_editor.grid(row=2, column=1)
+        card_csv_editor = Entry(editor, width=30)
+        card_csv_editor.grid(row=3, column=1)
+        card_expiration_editor = Entry(editor, width=30)
+        card_expiration_editor.grid(row=4, column=1)
+        cardholder_editor = Entry(editor, width=30)
+        cardholder_editor.grid(row=5, column=1)
 
         # Create Text Box Labels
+        card_id_label = Label(editor, text="Payment ID")
+        card_id_label.grid(row=0, column=0)
         card_carrier_label = Label(editor, text="Card Carrier")
-        card_carrier_label.grid(row=0, column=0)
+        card_carrier_label.grid(row=1, column=0)
         card_number_label = Label(editor, text="Card Number")     
-        card_number_label.grid(row=1, column=0)
+        card_number_label.grid(row=2, column=0)
         card_csv_label = Label(editor, text="CSV")
-        card_csv_label.grid(row=2, column=0)
+        card_csv_label.grid(row=3, column=0)
         card_expiration_label = Label(editor, text="Expiration Date")
-        card_expiration_label.grid(row=3, column=0)
+        card_expiration_label.grid(row=4, column=0)
         cardholder_label = Label(editor, text="Cardholder Name")
-        cardholder_label.grid(row=4, column=0)
+        cardholder_label.grid(row=5, column=0)
 
         edit_paymentrecord = Button(editor, text="Save", command=savePayment)
-        edit_paymentrecord.grid(row=5, column=1, columnspan=1, ipady=5, ipadx=84)
+        edit_paymentrecord.grid(row=6, column=1, columnspan=1, ipady=5, ipadx=84)
 
         c.execute("SELECT * FROM GuestPayment WHERE oid=" + paymentRecord_id)
         paymentrecords = c.fetchall()
         for record in paymentrecords:
-            card_carrier_editor.insert(0, record[0])
-            card_number_editor.insert(0, record[1])
-            card_csv_editor.insert(0, record[2])
-            card_expiration_editor.insert(0, record[3])
-            cardholder_editor.insert(0, record[4])
+            card_id_editor.insert(0, record[0])
+            card_carrier_editor.insert(0, record[1])
+            card_number_editor.insert(0, record[2])
+            card_csv_editor.insert(0, record[3])
+            card_expiration_editor.insert(0, record[4])
+            cardholder_editor.insert(0, record[5])
 
 
     def insertPaymenttoDB():
