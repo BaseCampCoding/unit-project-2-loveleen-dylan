@@ -153,7 +153,7 @@ def main_control():
         con = sqlite3.connect("RESERVME.db")
         # Cursor
         c = con.cursor()
-        record_id = delete_box.get()
+        record_id = card_id.get()
         # Select data
 
         # Create Text Boxes
@@ -195,7 +195,7 @@ def main_control():
         edit_record = Button(editor, text="Save Record", command=save)
         edit_record.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=84)
 
-        c.execute("SELECT * FROM UserInformation WHERE oid=" + record_id)
+        c.execute("SELECT * FROM GuestPayment WHERE oid=" + record_id)
         records = c.fetchall()
         for record in records:
             userID_editor.insert(0, record[0])
@@ -239,11 +239,6 @@ def main_control():
         for info in paymentRecords:
             tree.insert("", "end", value=info)
 
-        # query_label = Label(root, text=print_records)
-        # query_label.grid(row=9, column=0, columnspan=2)
-        query_label = Label(root, text=print_records)
-        query_label.grid(row=9, column=0, columnspan=2)
-
         # Commit changes
         con.commit()
 
@@ -258,7 +253,6 @@ def main_control():
         c = con.cursor()
 
         c.execute("DELETE from GuestPayment WHERE oid= " + card_id.get())
-        c.execute("DELETE from Guest WHERE oid= " + delete_box.get())
 
         # Commit changes
         con.commit()
@@ -306,7 +300,9 @@ def main_control():
         con = sqlite3.connect("RESERVME.db")
         # Cursor
         c = con.cursor()
+        global paymentRecord_id
         paymentRecord_id = card_id.get()
+        
 
         # Create Text Boxes
         card_carrier_editor = Entry(root, width=30)
@@ -332,7 +328,7 @@ def main_control():
         cardholder_label = Label(editor, text="Cardholder Name")
         cardholder_label.grid(row=4, column=0)
 
-        edit_paymentrecord = Button(editor, text="Save", command=save)
+        edit_paymentrecord = Button(editor, text="Save", command=savePayment)
         edit_paymentrecord.grid(row=5, column=1, columnspan=1, ipady=5, ipadx=84)
 
         c.execute("SELECT * FROM GuestPayment WHERE oid=" + paymentRecord_id)
@@ -374,7 +370,9 @@ def main_control():
         card_expiration.delete(0, END)
         cardholder.delete(0, END)
 
-    def payment():
+
+
+    def updatePayment():
         global card_carrier
         global card_number
         global card_csv
@@ -402,9 +400,7 @@ def main_control():
                 "card_expiration": card_expiration.get(),
                 "cardholder": cardholder.get(),
             },
-        )
-        con.commit()
-        # Commit data
+        )        # Commit data
         con.commit()
         # Close database
         con.close()
@@ -414,13 +410,13 @@ def main_control():
         card_csv.delete(0, END)
         card_expiration.delete(0, END)
         cardholder.delete(0, END)
-
     def payment():
         global card_carrier
         global card_number
         global card_csv
         global card_expiration
         global cardholder
+        global card_id
         # Connect to database
         con = sqlite3.connect("RESERVME.db")
         # Cursor
@@ -453,6 +449,7 @@ def main_control():
         cardholder.grid(row=4, column=1)
         card_id = Entry(root, width=30)
         card_id.grid(row=6, column=1)
+        
         # Labels for Payment textboxes
         card_carrier_label = Label(root, text="Card Company")
         card_carrier_label.grid(row=0, column=0)
@@ -477,16 +474,10 @@ def main_control():
         delete_payment = Button(root, text="Delete Payment", command=deletePayment)
         delete_payment.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=77)
         # Edit Record Button
-        edit_payments = Button(root, text="Edit Record", command=editPayment)
+        edit_payments = Button(root, text="Edit Payment", command=editPayment)
         edit_payments.grid(row=9, column=1, columnspan=1, ipady=5, ipadx=84)
 
-        show_payments.grid(row=7, column=1, columnspan=1, ipady=5, ipadx=76)
-        # Delete Records Button
-        delete_payment = Button(root, text="Delete Payment", command=deletePayment)
-        delete_payment.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=76)
-        # Edit Record Button
-        edit_payments = Button(root, text="Edit Record", command=update)
-        edit_payments.grid(row=9, column=1, columnspan=1, ipady=5, ipadx=87)
+
 
     # Create Text Boxes
     room_type = Entry(root, width=30)

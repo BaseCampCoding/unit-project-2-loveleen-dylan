@@ -90,3 +90,5 @@ cur.execute(
 
 # cur.execute("SELECT * FROM GuestPayment")
 # print(cur.fetchall())
+
+con.commit()
