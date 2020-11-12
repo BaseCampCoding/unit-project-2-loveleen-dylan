@@ -77,8 +77,6 @@ def main_control():
         for info in records:
             tree.insert("", "end", value=info)
 
-        query_label = Label(root, text=print_records)
-        query_label.grid(row=9, column=0, columnspan=2)
 
         # Commit changes
         con.commit()
@@ -243,6 +241,8 @@ def main_control():
 
         # query_label = Label(root, text=print_records)
         # query_label.grid(row=9, column=0, columnspan=2)
+        query_label = Label(root, text=print_records)
+        query_label.grid(row=9, column=0, columnspan=2)
 
         # Commit changes
         con.commit()
@@ -258,6 +258,7 @@ def main_control():
         c = con.cursor()
 
         c.execute("DELETE from GuestPayment WHERE oid= " + card_id.get())
+        c.execute("DELETE from Guest WHERE oid= " + delete_box.get())
 
         # Commit changes
         con.commit()
@@ -295,6 +296,7 @@ def main_control():
         con.close()
         editor.destroy()
         
+
     def editPayment():
         editor = Tk()
         editor.title("Edit a Payment")
@@ -388,6 +390,46 @@ def main_control():
         root = Tk()
         root.title("Payment")
         root.geometry("420x220")
+        c = con.cursor()
+
+        # Insert into table
+        c.execute(
+            "INSERT INTO GuestPayment VALUES(:card_carrier, :card_number, :card_csv, :card_expiration, :cardholder)",
+            {
+                "card_carrier": card_carrier.get(),
+                "card_number": card_number.get(),
+                "card_csv": card_csv.get(),
+                "card_expiration": card_expiration.get(),
+                "cardholder": cardholder.get(),
+            },
+        )
+        con.commit()
+        # Commit data
+        con.commit()
+        # Close database
+        con.close()
+        # Clear Text Boxes
+        card_carrier.delete(0, END)
+        card_number.delete(0, END)
+        card_csv.delete(0, END)
+        card_expiration.delete(0, END)
+        cardholder.delete(0, END)
+
+    def payment():
+        global card_carrier
+        global card_number
+        global card_csv
+        global card_expiration
+        global cardholder
+        # Connect to database
+        con = sqlite3.connect("RESERVME.db")
+        # Cursor
+        c = con.cursor()
+
+        # creating payment gui
+        root = Tk()
+        root.title("Payment")
+        root.geometry("400x400")
         # c.execute(
         #     "SELECT price FROM RoomsAvailability WHERE guest = (?)", (f_name.get(),),
         # )
@@ -438,6 +480,13 @@ def main_control():
         edit_payments = Button(root, text="Edit Record", command=editPayment)
         edit_payments.grid(row=9, column=1, columnspan=1, ipady=5, ipadx=84)
 
+        show_payments.grid(row=7, column=1, columnspan=1, ipady=5, ipadx=76)
+        # Delete Records Button
+        delete_payment = Button(root, text="Delete Payment", command=deletePayment)
+        delete_payment.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=76)
+        # Edit Record Button
+        edit_payments = Button(root, text="Edit Record", command=update)
+        edit_payments.grid(row=9, column=1, columnspan=1, ipady=5, ipadx=87)
 
     # Create Text Boxes
     room_type = Entry(root, width=30)
@@ -488,6 +537,9 @@ def main_control():
     # Show Records Button
     show_records = Button(root, text="Show Records", command=records)
     show_records.grid(row=10, column=1, columnspan=1, ipady=5, ipadx=79)
+    # Show Records Button
+    show_records = Button(root, text="Show Records", command=records)
+    show_records.grid(row=10, column=1, columnspan=1, ipady=5, ipadx=77.7)
 
     # Edit Record Button
     edit_record = Button(root, text="Edit Record", command=update)
@@ -499,4 +551,5 @@ def main_control():
 
     # Delete Records Button
     delete_records = Button(root, text="Delete Record", command=delete)
+    delete_records.grid(row=13, column=1, columnspan=1, ipady=5, ipadx=77.3)
     delete_records.grid(row=13, column=1, columnspan=1, ipady=5, ipadx=77.3)
