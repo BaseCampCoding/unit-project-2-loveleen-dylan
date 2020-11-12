@@ -296,6 +296,16 @@ def main_control():
         con.commit()
         con.close()
         editor.destroy()
+    def editPayment():
+        editor = Tk()
+        editor.title("Edit a Payment")
+        editor.geometry("400x600")
+
+        # Connect to database
+        con = sqlite3.connect("RESERVME.db")
+        # Cursor
+        c = con.cursor()
+        # paymentRecord_id = 
 
     def insertPaymenttoDB():
         # Connect to database
@@ -350,6 +360,8 @@ def main_control():
         # tree.grid(row=0, column=0, sticky="news")
         # for data in total:
         #     tree.insert("", "end", value=info)
+
+        # Payment Textbox
         card_carrier = Entry(root, width=30)
         card_carrier.grid(row=0, column=1)
         card_number = Entry(root, width=30)
@@ -360,6 +372,9 @@ def main_control():
         card_expiration.grid(row=3, column=1)
         cardholder = Entry(root, width=30)
         cardholder.grid(row=4, column=1)
+        card_id = Entry(root, width=30)
+        card_id.grid(row=6, column=1)
+        # Labels for Payment textboxes
         card_carrier_label = Label(root, text="Card Company")
         card_carrier_label.grid(row=0, column=0)
         card_number_label = Label(root, text="Card Number")
@@ -370,19 +385,22 @@ def main_control():
         card_expiration_label.grid(row=3, column=0)
         cardholder_label = Label(root, text="Cardholder Name")
         cardholder_label.grid(row=4, column=0)
+        card_id_label = Label(root, text="Card ID")
+        card_id_label.grid(row=6, column=0)
 
         # Payment button
         make_payment_btn = Button(root, text="Make Payment", command=insertPaymenttoDB)
         make_payment_btn.grid(row=5, column=1, columnspan=1, ipady=5, ipadx=77)
         # Show Payment Records Button
         show_payments = Button(root, text="Show Payments", command=paymentRecords)
-        show_payments.grid(row=6, column=1, columnspan=1, ipady=5, ipadx=79)
+        show_payments.grid(row=7, column=1, columnspan=1, ipady=5, ipadx=79)
         # Delete Records Button
         delete_payment = Button(root, text="Delete Payment", command=deletePayment)
-        delete_payment.grid(row=7, column=1, columnspan=1, ipady=5, ipadx=77)
+        delete_payment.grid(row=8, column=1, columnspan=1, ipady=5, ipadx=77)
         # Edit Record Button
-        # edit_payments = Button(root, text="Edit Record", command=update)
-        # edit_payments.grid(row=9, column=1, columnspan=1, ipady=5, ipadx=84)
+        edit_payments = Button(root, text="Edit Record", command=update)
+        edit_payments.grid(row=9, column=1, columnspan=1, ipady=5, ipadx=84)
+
 
     # Create Text Boxes
     room_type = Entry(root, width=30)
