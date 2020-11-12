@@ -47,7 +47,7 @@ def main_control():
     def records():
         root = Tk()
         root.title("DataBase")
-        root.geometry("800x400")
+        root.geometry("807x400")
         # Connect to database
         con = sqlite3.connect("RESERVME.db")
         # Cursor
